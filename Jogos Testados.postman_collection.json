@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "e2d2f52d-1bf6-4d29-99f4-8a8ccf77b5cb",
+		"name": "Jogos Testados",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "48297813",
+		"_collection_link": "https://www.postman.com/wonderfull-avocado/teste-jogos/collection/l7bwei6/jogos-testados?action=share&source=collection_link&creator=48297813"
+	},
+	"item": [
+		{
+			"name": "Lista de jogos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/ACME/produto",
+				"description": "Lista os jogos cadastrados"
+			},
+			"response": []
+		},
+		{
+			"name": "Lista de códigos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/ACME/codigos",
+				"description": "Lista os códigos de cada jogo cadastrado"
+			},
+			"response": []
+		},
+		{
+			"name": "Titulo e ano",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/ACME/tituloseano/Minecraft/ano/2011",
+				"description": "Retorna ao jogo, que foi dado como parâmetro o título e o jogo"
+			},
+			"response": []
+		},
+		{
+			"name": "Adiciona mais jogos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"codigo\": 777,\r\n  \"titulo\": \"Rayman Legends\",\r\n  \"empresa\": \"Ubisoft\",\r\n  \"preco\": 59.95,\r\n  \"anoLanca\": 2013\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/ACME/novojogo"
+			},
+			"response": []
+		},
+		{
+			"name": "DESAFIO - Filtrar por ano",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/ACME/filtro?num=2015&campo=A&comparacao=>",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"ACME",
+						"filtro"
+					],
+					"query": [
+						{
+							"key": "num",
+							"value": "2015"
+						},
+						{
+							"key": "campo",
+							"value": "A"
+						},
+						{
+							"key": "comparacao",
+							"value": ">"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DESAFIO - Filtrar por código",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/ACME/filtro?num=333&campo=C&comparacao==",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"ACME",
+						"filtro"
+					],
+					"query": [
+						{
+							"key": "num",
+							"value": "333"
+						},
+						{
+							"key": "campo",
+							"value": "C"
+						},
+						{
+							"key": "comparacao",
+							"value": "="
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DESAFIO - Filtrar por preço",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/ACME/filtro?num=50&campo=P&comparacao=>",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"ACME",
+						"filtro"
+					],
+					"query": [
+						{
+							"key": "num",
+							"value": "50"
+						},
+						{
+							"key": "campo",
+							"value": "P"
+						},
+						{
+							"key": "comparacao",
+							"value": ">"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
