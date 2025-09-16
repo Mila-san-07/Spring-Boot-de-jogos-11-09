@@ -23,16 +23,18 @@ public class Acervo {
         return produtos;
     }
     
-    public List<String> getCodigos() {
-        return produtos.stream()
+    public List<Integer> getCodigos() {
+        List<Integer> codigos = produtos.stream()
                .map(produto->produto.getCodigo())
-               .toList().orElse(null);
+               .toList();
+        return codigos.isEmpty() ? null : codigos;
+
     }
 
     public List<Produto> getTituloAno(String titulo,
                                         int ano) {
        return produtos.stream()
-         .filter(produto->produto.getTitulo().equals(titulo))
+         .filter(produto->produto.getTitulo().equalsIgnoreCase(titulo))
          .filter(produto->produto.getAnoLanca() == ano)
          .toList();
     }
@@ -43,37 +45,24 @@ public class Acervo {
     }
 
     //desafio 
-    /*
     public List<Produto> getCodigoPrecoAno(double num, String campo, String comparacao) {
        return produtos.stream()
-         .filter(produto->produto.getPreco() == num) //ver o ==
-         .forEach(p -> {
-            if(campo == "P"){
-                System.out.println(p.getPreco());
-            }else if(campo == "C"){
-                System.out.println(p.getCodigo());
-            } else if(campo == "A"){
-                System.out.println(p.getAnoLanca());
-            }
-         })
-         .forEach(d -> {
-            if(comparacao == ">" ){
-                System.out.println(d.getPreco());
-            }else if(comparacao == "<"){
-                System.out.println(d.getCodigo());
-            }
-         }) 
-            
-         
-         .filter(produto->produto.getPreco() == (campo))
-         .filter(produto->produto.getAno() == ano)
-         .forEach(p -> {
-            if()
-         })
-         .toList().orElse(null);
-    } 
-    */
+         .filter(p ->{
+            double valor = switch (campo){
+            case "C" -> p.getCodigo();
+            case "P" -> p.getPreco();
+            case "A" -> p.getAnoLanca();
+            default -> -1;
+            };
 
-   
+            return switch (comparacao){
+                case "<" -> valor < num;
+                case "=" -> valor == num;
+                case ">" -> valor > num;
+                default -> false;
+            };
+         })
+         .toList();
+    }  
 
 }

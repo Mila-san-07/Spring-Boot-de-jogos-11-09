@@ -27,7 +27,7 @@ public class ExemploController {
     }
 
     @GetMapping("/codigos")
-    public List<String> getCodigos(){
+    public List<Integer> getCodigos(){
         return acervo.getCodigos();
     }
     
@@ -39,6 +39,14 @@ public class ExemploController {
 
     @PostMapping("/novojogo")
     public boolean cadastraJogoNovo(@RequestBody final Produto produto) {
-        return acervo.cadastraLivroNovo(produto);
+        return acervo.cadastraProdutoNovo(produto);
+    }
+
+    @GetMapping("/filtro")
+    public List<Produto> filtrar(
+        @RequestParam double num,
+        @RequestParam String campo,
+        @RequestParam String comparacao) {
+            return acervo.getCodigoPrecoAno(num, campo, comparacao);
     }
 }
